@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Fetcher",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth", "TrueCode.Services.Auth\TrueCode.Services.Auth.csproj", "{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{131A8C7E-BE26-46DB-80AE-B03896C3BEB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth.Tests", "TrueCode.Services.Auth.Tests\TrueCode.Services.Auth.Tests.csproj", "{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,7 @@ Global
 		{833E91C1-0815-4399-AAE7-1DDB30E8F28F} = {CB39AD13-3110-4B5C-B475-32F13F1C349A}
 		{3C8312AB-406A-4C4B-BA33-A7B71815B655} = {CB39AD13-3110-4B5C-B475-32F13F1C349A}
 		{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6} = {CB39AD13-3110-4B5C-B475-32F13F1C349A}
+		{815D9183-7BC1-49EB-BE1F-25C8A8D224AD} = {131A8C7E-BE26-46DB-80AE-B03896C3BEB8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{833E91C1-0815-4399-AAE7-1DDB30E8F28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -31,5 +36,9 @@ Global
 		{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

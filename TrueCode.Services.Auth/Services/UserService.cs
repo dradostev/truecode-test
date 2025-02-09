@@ -1,8 +1,11 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using Grpc.Core;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using TrueCode.Services.Auth.Configuration;
 using TrueCode.Services.Auth.Contracts;
 using TrueCode.Services.Auth.Models;
 
@@ -11,14 +14,12 @@ namespace TrueCode.Services.Auth.Services;
 public class UserService(
     ILogger<UserService> logger,
     IUserRepository repository,
-    IConfiguration config) : AuthService.AuthServiceBase
+    IOptions<JwtConfig> jwtConfig) : AuthService.AuthServiceBase
 {
     private readonly ILogger<UserService> _logger = logger;
     private readonly IUserRepository _repository = repository;
     
-    private readonly int _accessMins = config.GetValue<int>("ACCESS_TOKEN_EXPIRES_MINS");
-    private readonly int _refreshDays = config.GetValue<int>("REFRESH_TOKEN_EXPIRES_DAYS");
-    private readonly string _secret = config.GetValue<string>("JWT_SECRET_KEY")!;
+    private readonly JwtConfig _jwtConfig = jwtConfig.Value;
     
     public override async Task<RegisterResponse> Register(RegisterRequest request, ServerCallContext context)
     {
@@ -43,6 +44,7 @@ public class UserService(
     
     public override async Task<AuthResponse> Authenticate(AuthRequest request, ServerCallContext context)
     {
+        Console.WriteLine(JsonSerializer.Serialize(_jwtConfig));
         var user = await _repository.GetUserByNameAsync(request.Name);
 
         if (user is null)
@@ -57,8 +59,8 @@ public class UserService(
             throw new RpcException(new Status(StatusCode.Unauthenticated, "Wrong password."));
         }
 
-        var access = GenerateToken(user, TimeSpan.FromMinutes(_accessMins));
-        var refresh = GenerateToken(user, TimeSpan.FromDays(_refreshDays));
+        var access = GenerateToken(user, TimeSpan.FromMinutes(_jwtConfig.AccessTokenExpiresMins));
+        var refresh = GenerateToken(user, TimeSpan.FromDays(_jwtConfig.RefreshTokenExpiresDays));
         
         _logger.LogInformation($"User {user.Name} has been authenticated.");
 
@@ -72,7 +74,7 @@ public class UserService(
     private string GenerateToken(User user, TimeSpan expires)
     {
         var handler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_secret);
+        var key = Encoding.ASCII.GetBytes(_jwtConfig.SecretKey);
 
         var now = DateTime.UtcNow;
         var descriptor = new SecurityTokenDescriptor
