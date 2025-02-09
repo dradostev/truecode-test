@@ -44,7 +44,6 @@ public class UserService(
     
     public override async Task<AuthResponse> Authenticate(AuthRequest request, ServerCallContext context)
     {
-        Console.WriteLine(JsonSerializer.Serialize(_jwtConfig));
         var user = await _repository.GetUserByNameAsync(request.Name);
 
         if (user is null)

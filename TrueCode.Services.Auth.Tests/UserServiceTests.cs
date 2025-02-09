@@ -29,7 +29,8 @@ public class UserServiceTests
         {
             AccessTokenExpiresMins = 30,
             RefreshTokenExpiresDays = 7,
-            SecretKey = "rgy842iuptjs5ctfirpksi0eq7e6vrq6q4u8z9adnf4e4vdllg74zoqdkms7624nubcrjcr7v9jtim74oqso2mz2jpo3hgpkv8grgxvfd23dme1llgdl9o2en387iev2"
+            SecretKey = "rgy842iuptjs5ctfirpksi0eq7e6vrq6q4u8z9adnf4e4vdllg74zoqdkms7624nubcrjcr7v9jtim" +
+                        "74oqso2mz2jpo3hgpkv8grgxvfd23dme1llgdl9o2en387iev2"
         });
 
         _userService = new UserService(

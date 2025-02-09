@@ -1,0 +1,44 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CurrencyService";
+
+package currency;
+
+service CurrencyService {
+  rpc GetFavorites (UserRequest) returns (CurrencyListResponse);
+  rpc AddFavorite (AddFavoriteRequest) returns (AddFavoriteResponse);
+  rpc RemoveFavorite (RemoveFavoriteRequest) returns (RemoveFavoriteResponse);
+}
+
+message UserRequest {
+  int32 user_id = 1;
+}
+
+message CurrencyInfo {
+  int32 id = 1;
+  string name = 2;
+  string code = 3;
+  double rate = 4;
+}
+
+message CurrencyListResponse {
+  repeated CurrencyInfo currencies = 1;
+}
+
+message AddFavoriteRequest {
+  int32 user_id = 1;
+  int32 currency_id = 2;
+}
+
+message AddFavoriteResponse {
+  string message = 2;
+}
+
+message RemoveFavoriteRequest {
+  int32 user_id = 1;
+  int32 currency_id = 2;
+}
+
+message RemoveFavoriteResponse {
+  string message = 2;
+}
