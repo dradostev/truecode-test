@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies", "TrueCode.Services.Currencies\TrueCode.Services.Currencies.csproj", "{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.API.Web", "TrueCode.API.Web\TrueCode.API.Web.csproj", "{4C070697-F0A6-41C8-9109-B6924BF0FC07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies.Tests", "TrueCode.Services.Currencies.Tests\TrueCode.Services.Currencies.Tests.csproj", "{8B360D99-6F14-497A-B918-98D30F217327}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,8 @@ Global
 		{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6} = {CB39AD13-3110-4B5C-B475-32F13F1C349A}
 		{815D9183-7BC1-49EB-BE1F-25C8A8D224AD} = {131A8C7E-BE26-46DB-80AE-B03896C3BEB8}
 		{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E} = {CB39AD13-3110-4B5C-B475-32F13F1C349A}
+		{4C070697-F0A6-41C8-9109-B6924BF0FC07} = {CB39AD13-3110-4B5C-B475-32F13F1C349A}
+		{8B360D99-6F14-497A-B918-98D30F217327} = {131A8C7E-BE26-46DB-80AE-B03896C3BEB8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{833E91C1-0815-4399-AAE7-1DDB30E8F28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -47,5 +53,13 @@ Global
 		{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C070697-F0A6-41C8-9109-B6924BF0FC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C070697-F0A6-41C8-9109-B6924BF0FC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C070697-F0A6-41C8-9109-B6924BF0FC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C070697-F0A6-41C8-9109-B6924BF0FC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B360D99-6F14-497A-B918-98D30F217327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B360D99-6F14-497A-B918-98D30F217327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B360D99-6F14-497A-B918-98D30F217327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B360D99-6F14-497A-B918-98D30F217327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
