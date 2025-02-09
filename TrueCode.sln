@@ -18,6 +18,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.API.Web", "TrueCod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies.Tests", "TrueCode.Services.Currencies.Tests\TrueCode.Services.Currencies.Tests.csproj", "{8B360D99-6F14-497A-B918-98D30F217327}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protos", "protos", "{9B509BBE-F235-4E93-BECB-EC002F013AE3}"
+	ProjectSection(SolutionItems) = preProject
+		auth.proto = auth.proto
+		currency.proto = currency.proto
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "TrueCode.Services.Auth";
+
+package auth;
+
+service AuthService {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Authenticate (AuthRequest) returns (AuthResponse);
+}
+
+message RegisterRequest {
+  string name = 1;
+  string password = 2;
+}
+
+message RegisterResponse {
+  string message = 1;
+}
+
+message AuthRequest {
+  string name = 1;
+  string password = 2;
+}
+
+message AuthResponse {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
