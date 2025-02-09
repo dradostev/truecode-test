@@ -1,0 +1,8 @@
+﻿using TrueCode.Services.Fetcher.Models;
+
+namespace TrueCode.Services.Fetcher.Contracts;
+
+public interface ICurrencyFetchService
+{
+    Task<IReadOnlyCollection<Currency>> FetchCurrencies(CancellationToken cancellationToken);
+}
