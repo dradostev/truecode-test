@@ -17,7 +17,7 @@ public class UserService(
     private readonly IUserRepository _repository = repository;
     
     private readonly int _accessMins = config.GetValue<int>("ACCESS_TOKEN_EXPIRES_MINS");
-    private readonly int _refreshDays = config.GetValue<int>("REFRESH_TOKEN_EXPIRES_MINS");
+    private readonly int _refreshDays = config.GetValue<int>("REFRESH_TOKEN_EXPIRES_DAYS");
     private readonly string _secret = config.GetValue<string>("JWT_SECRET_KEY")!;
     
     public override async Task<RegisterResponse> Register(RegisterRequest request, ServerCallContext context)
@@ -74,13 +74,15 @@ public class UserService(
         var handler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_secret);
 
+        var now = DateTime.UtcNow;
         var descriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity([
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name)
             ]),
-            Expires = DateTime.UtcNow.Add(expires),
+            Expires = now.Add(expires),
+            NotBefore = now,
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
