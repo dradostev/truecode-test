@@ -16,18 +16,15 @@ public class UserService(
     IUserRepository repository,
     IOptions<JwtConfig> jwtConfig) : AuthService.AuthServiceBase
 {
-    private readonly ILogger<UserService> _logger = logger;
-    private readonly IUserRepository _repository = repository;
-    
     private readonly JwtConfig _jwtConfig = jwtConfig.Value;
     
     public override async Task<RegisterResponse> Register(RegisterRequest request, ServerCallContext context)
     {
-        var oldUser = await _repository.GetUserByNameAsync(request.Name);
+        var oldUser = await repository.GetUserByNameAsync(request.Name);
 
         if (oldUser != null)
         {
-            _logger.LogInformation($"User {oldUser.Name} already exists");
+            logger.LogInformation($"User {oldUser.Name} already exists");
             throw new RpcException(new Status(StatusCode.AlreadyExists, "User already exists."));
         }
 
@@ -35,33 +32,33 @@ public class UserService(
 
         var user = new User(request.Name, hash);
 
-        await _repository.AddUserAsync(user);
+        await repository.AddUserAsync(user);
         
-        _logger.LogInformation($"User {user.Name} has been registered.");
+        logger.LogInformation($"User {user.Name} has been registered.");
 
         return new RegisterResponse { Message = "Registration has been completed successfully." };
     }
     
     public override async Task<AuthResponse> Authenticate(AuthRequest request, ServerCallContext context)
     {
-        var user = await _repository.GetUserByNameAsync(request.Name);
+        var user = await repository.GetUserByNameAsync(request.Name);
 
         if (user is null)
         {
-            _logger.LogInformation($"User {request.Name} does not exist.");
+            logger.LogInformation($"User {request.Name} does not exist.");
             throw new RpcException(new Status(StatusCode.NotFound, "User does not exist."));
         }
 
         if (!BCrypt.Net.BCrypt.Verify(request.Password, user.Password))
         {
-            _logger.LogInformation($"User {user.Name} tried to authenticate with wrong password.");
+            logger.LogInformation($"User {user.Name} tried to authenticate with wrong password.");
             throw new RpcException(new Status(StatusCode.Unauthenticated, "Wrong password."));
         }
 
         var access = GenerateToken(user, TimeSpan.FromMinutes(_jwtConfig.AccessTokenExpiresMins));
         var refresh = GenerateToken(user, TimeSpan.FromDays(_jwtConfig.RefreshTokenExpiresDays));
         
-        _logger.LogInformation($"User {user.Name} has been authenticated.");
+        logger.LogInformation($"User {user.Name} has been authenticated.");
 
         return new AuthResponse
         {

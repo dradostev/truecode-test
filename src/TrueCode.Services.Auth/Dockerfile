@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["TrueCode.Services.Auth/TrueCode.Services.Auth.csproj", "TrueCode.Services.Auth/"]
 RUN dotnet restore "TrueCode.Services.Auth/TrueCode.Services.Auth.csproj"
 COPY . .
+COPY ../../protos ../
 WORKDIR "/src/TrueCode.Services.Auth"
 RUN dotnet build "TrueCode.Services.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/build
 

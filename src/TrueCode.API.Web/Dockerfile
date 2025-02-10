@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["TrueCode.API.Web/TrueCode.API.Web.csproj", "TrueCode.API.Web/"]
 RUN dotnet restore "TrueCode.API.Web/TrueCode.API.Web.csproj"
 COPY . .
+COPY ../../protos ../
 WORKDIR "/src/TrueCode.API.Web"
 RUN dotnet build "TrueCode.API.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
 

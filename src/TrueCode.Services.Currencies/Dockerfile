@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["TrueCode.Services.Currencies/TrueCode.Services.Currencies.csproj", "TrueCode.Services.Currencies/"]
 RUN dotnet restore "TrueCode.Services.Currencies/TrueCode.Services.Currencies.csproj"
 COPY . .
+COPY ../../protos ../
 WORKDIR "/src/TrueCode.Services.Currencies"
 RUN dotnet build "TrueCode.Services.Currencies.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
