@@ -2,27 +2,21 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CB39AD13-3110-4B5C-B475-32F13F1C349A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Migrator", "TrueCode.Services.Migrator\TrueCode.Services.Migrator.csproj", "{833E91C1-0815-4399-AAE7-1DDB30E8F28F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Migrator", "src\TrueCode.Services.Migrator\TrueCode.Services.Migrator.csproj", "{833E91C1-0815-4399-AAE7-1DDB30E8F28F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Fetcher", "TrueCode.Services.Fetcher\TrueCode.Services.Fetcher.csproj", "{3C8312AB-406A-4C4B-BA33-A7B71815B655}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Fetcher", "src\TrueCode.Services.Fetcher\TrueCode.Services.Fetcher.csproj", "{3C8312AB-406A-4C4B-BA33-A7B71815B655}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth", "TrueCode.Services.Auth\TrueCode.Services.Auth.csproj", "{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth", "src\TrueCode.Services.Auth\TrueCode.Services.Auth.csproj", "{C8D6FCEA-280F-48C0-AA71-1DA7C5C062D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{131A8C7E-BE26-46DB-80AE-B03896C3BEB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth.Tests", "TrueCode.Services.Auth.Tests\TrueCode.Services.Auth.Tests.csproj", "{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Auth.Tests", "tests\TrueCode.Services.Auth.Tests\TrueCode.Services.Auth.Tests.csproj", "{815D9183-7BC1-49EB-BE1F-25C8A8D224AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies", "TrueCode.Services.Currencies\TrueCode.Services.Currencies.csproj", "{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies", "src\TrueCode.Services.Currencies\TrueCode.Services.Currencies.csproj", "{1050E7EC-EFC9-4060-8B08-3D5EBC1AB20E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.API.Web", "TrueCode.API.Web\TrueCode.API.Web.csproj", "{4C070697-F0A6-41C8-9109-B6924BF0FC07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.API.Web", "src\TrueCode.API.Web\TrueCode.API.Web.csproj", "{4C070697-F0A6-41C8-9109-B6924BF0FC07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies.Tests", "TrueCode.Services.Currencies.Tests\TrueCode.Services.Currencies.Tests.csproj", "{8B360D99-6F14-497A-B918-98D30F217327}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protos", "protos", "{9B509BBE-F235-4E93-BECB-EC002F013AE3}"
-	ProjectSection(SolutionItems) = preProject
-		auth.proto = auth.proto
-		currency.proto = currency.proto
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueCode.Services.Currencies.Tests", "tests\TrueCode.Services.Currencies.Tests\TrueCode.Services.Currencies.Tests.csproj", "{8B360D99-6F14-497A-B918-98D30F217327}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
