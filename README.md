@@ -12,6 +12,7 @@
 1. Требуются установленные [Docker Engine](https://www.docker.com) и [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
 2. Включить аддон Ingress в minikube: `minikube addons enable ingress`
 3. Добавить IP-адрес minikube-кластера Kubernetes в hosts: `echo "$(minikube ip) localhost" | sudo tee -a /etc/hosts`
-4. Туннелировать Ingress наружу: `minikube tunnel`. 
-5. API Gateway будет доступен по адресу http://localhost.
-6. Документация OpenAPI будет доступна по адресу http://localhost/swagger/index.html
+4. Запустить билд-скрипт: `./build.sh`
+5. Туннелировать Ingress наружу: `minikube tunnel`. 
+6. API Gateway будет доступен по адресу http://localhost.
+7. Документация OpenAPI будет доступна по адресу http://localhost/swagger/index.html
