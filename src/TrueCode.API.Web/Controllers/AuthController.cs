@@ -11,9 +11,16 @@ public class AuthController : ApiController
 {
     private readonly AuthService.AuthServiceClient _grpcClient;
 
-    public AuthController()
+    public AuthController(IConfiguration config)
     {
-        var channel = GrpcChannel.ForAddress("http://localhost:5032");
+        var url = config["SERVICE_AUTH_URL"];
+
+        if (string.IsNullOrEmpty(url))
+        {
+            throw new NullReferenceException("SERVICE_AUTH_URL is empty");
+        }
+        
+        var channel = GrpcChannel.ForAddress(url);
         _grpcClient = new AuthService.AuthServiceClient(channel);
     }
 

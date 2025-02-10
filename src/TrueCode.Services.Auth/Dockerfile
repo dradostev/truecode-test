@@ -7,11 +7,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["TrueCode.Services.Auth/TrueCode.Services.Auth.csproj", "TrueCode.Services.Auth/"]
+COPY ["src/TrueCode.Services.Auth/TrueCode.Services.Auth.csproj", "TrueCode.Services.Auth/"]
 RUN dotnet restore "TrueCode.Services.Auth/TrueCode.Services.Auth.csproj"
 COPY . .
-COPY ../../protos ../
-WORKDIR "/src/TrueCode.Services.Auth"
+COPY ../protos /protos
+WORKDIR "src/TrueCode.Services.Auth"
 RUN dotnet build "TrueCode.Services.Auth.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

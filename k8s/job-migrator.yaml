@@ -1,0 +1,22 @@
+﻿apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-migrator
+  namespace: truecode
+spec:
+  ttlSecondsAfterFinished: 30
+  template:
+    metadata:
+      labels:
+        app: job-migrator
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: job-migrator
+          image: job-migrator:latest
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secret

@@ -1,0 +1,36 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetcher-service
+  namespace: truecode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fetcher-service
+  template:
+    metadata:
+      labels:
+        app: fetcher-service
+    spec:
+      containers:
+        - name: fetcher-service
+          image: svc-fetcher
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fetcher-service
+  namespace: truecode
+spec:
+  selector:
+    app: fetcher-service
+  ports:
+    - port: 5002
+      targetPort: 5002

@@ -11,9 +11,16 @@ public class CurrencyController : ApiController
 {
     private readonly CurrencyService.CurrencyService.CurrencyServiceClient _grpcClient;
 
-    public CurrencyController()
+    public CurrencyController(IConfiguration config)
     {
-        var channel = GrpcChannel.ForAddress("http://localhost:5090");
+        var url = config["SERVICE_CURRENCY_URL"];
+
+        if (string.IsNullOrEmpty(url))
+        {
+            throw new NullReferenceException("SERVICE_CURRENCY_URL is empty");
+        }
+        
+        var channel = GrpcChannel.ForAddress(url);
         _grpcClient = new CurrencyService.CurrencyService.CurrencyServiceClient(channel);
     }
 

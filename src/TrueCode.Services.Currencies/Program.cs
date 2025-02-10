@@ -6,11 +6,13 @@ using TrueCode.Services.Currencies.Contracts;
 using TrueCode.Services.Currencies.Middlewares;
 using TrueCode.Services.Currencies.Repositories;
 using TrueCode.Services.Currencies.Services;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<ICurrencyRepository, CurrencyRepository>();
 var key = builder.Configuration["JwtConfig:SecretKey"];
+
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -27,13 +29,13 @@ builder.Services
 builder.Services.AddAuthorization();
 builder.Services.AddSingleton<Interceptor, AuthorizationInterceptor>();
 builder.Services.AddGrpc();
+builder.Services.AddGrpcHealthChecks().AddCheck("health", () => HealthCheckResult.Healthy());;
 
 var app = builder.Build();
 
 app.MapGrpcService<CurrenciesService>();
+app.MapGrpcHealthChecksService();
 
-app.MapGet("/",
-    () =>
-        "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+app.MapGet("/", () => "currencies service");
 
 app.Run();

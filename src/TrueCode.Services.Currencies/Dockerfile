@@ -7,11 +7,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["TrueCode.Services.Currencies/TrueCode.Services.Currencies.csproj", "TrueCode.Services.Currencies/"]
+COPY ["src/TrueCode.Services.Currencies/TrueCode.Services.Currencies.csproj", "TrueCode.Services.Currencies/"]
 RUN dotnet restore "TrueCode.Services.Currencies/TrueCode.Services.Currencies.csproj"
 COPY . .
-COPY ../../protos ../
-WORKDIR "/src/TrueCode.Services.Currencies"
+COPY ../protos /protos
+WORKDIR "src/TrueCode.Services.Currencies"
 RUN dotnet build "TrueCode.Services.Currencies.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

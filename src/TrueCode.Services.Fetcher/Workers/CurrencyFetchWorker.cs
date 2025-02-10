@@ -12,9 +12,6 @@ public class CurrencyFetchWorker(
     IConfiguration configuration)
     : BackgroundService
 {
-    private readonly ILogger<CurrencyFetchWorker> _logger = logger;
-    private readonly ICurrencyFetchService _fetchService = fetchService;
-    private readonly ICurrencyRepository _repository = repository;
     private readonly int _interval = configuration.GetValue<int>("FETCH_INTERVAL_MINS");
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -25,17 +22,17 @@ public class CurrencyFetchWorker(
         {
             while (await timer.WaitForNextTickAsync(stoppingToken))
             {
-                _logger.LogInformation("Starting to fetch currencies...");
+                logger.LogInformation("Starting to fetch currencies...");
             
-                var currencies = await _fetchService.FetchCurrencies(stoppingToken);
-                await _repository.UpdateAsync(currencies, stoppingToken);
+                var currencies = await fetchService.FetchCurrencies(stoppingToken);
+                await repository.UpdateAsync(currencies, stoppingToken);
             }
         }
         catch (OperationCanceledException)
         {
-            _logger.LogWarning("Fetching currencies was cancelled.");
+            logger.LogWarning("Fetching currencies was cancelled.");
         }
         
-        _logger.LogInformation("Fetching currencies completed.");
+        logger.LogInformation("Fetching currencies completed.");
     }
 }

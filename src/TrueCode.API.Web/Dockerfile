@@ -7,11 +7,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["TrueCode.API.Web/TrueCode.API.Web.csproj", "TrueCode.API.Web/"]
+COPY ["src/TrueCode.API.Web/TrueCode.API.Web.csproj", "TrueCode.API.Web/"]
 RUN dotnet restore "TrueCode.API.Web/TrueCode.API.Web.csproj"
 COPY . .
-COPY ../../protos ../
-WORKDIR "/src/TrueCode.API.Web"
+COPY ../protos /protos
+WORKDIR "src/TrueCode.API.Web"
 RUN dotnet build "TrueCode.API.Web.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
