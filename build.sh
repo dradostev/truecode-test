@@ -1,4 +1,4 @@
-﻿eval $(minikube docker-env)
+eval $(minikube docker-env)
 
 docker build -t svc-auth:latest -f src/TrueCode.Services.Auth/Dockerfile .
 docker build -t svc-currencies:latest -f src/TrueCode.Services.Currencies/Dockerfile .
